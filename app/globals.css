@@ -1,3 +1,4 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -68,25 +69,72 @@
   }
 }
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 @layer base {
   /* Ensure html and body use the theme's background and foreground colors */
   html {
     @apply bg-background text-foreground;
   }
   body {
-    @apply bg-background text-foreground;
+    /* Apply a subtle gradient for a deeper space feel */
+    background: radial-gradient(circle at top left, var(--deep-space) 0%, #000000 100%);
+    /* Ensure smooth transitions for theme changes */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    /* Apply base font for the body */
+    font-family: Arial, Helvetica, sans-serif; /* Keep your original font-family */
   }
   * {
     @apply border-border;
   }
+
+  /* Custom scrollbar for a futuristic look */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--deep-space);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--electric-blue); /* Use electric-blue for the thumb */
+    border-radius: 5px;
+    border: 2px solid var(--deep-space);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--nebula-purple); /* Hover effect */
+  }
+
+  /* Enhance focus states for accessibility and aesthetics */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring)); /* Use the ring color for focus */
+    outline-offset: 2px;
+    border-radius: var(--radius, 0.5rem); /* Apply border-radius from theme, with fallback */
+  }
+
+  /* Text selection styling */
+  ::selection {
+    background-color: var(--electric-blue);
+    color: var(--deep-space);
+  }
 }
 
-/* Custom styles for glassmorphism */
+/* Refined glassmorphism to look more premium */
 .glassmorphism {
   background-color: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(15px) saturate(180%); /* Slightly more blur and saturation */
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Add a subtle shadow */
+  border-radius: 10px; /* More rounded corners for glass elements */
 }
 
 /* Custom spaceship cursor */
@@ -102,3 +150,6 @@
 .glassmorphism .text-muted-foreground {
   color: hsl(var(--muted-foreground));
 }
+
+/* Removed specific CSS rules for #tsparticles and #shooting-stars-particles */
+/* as these components are now removed from app/layout.tsx */

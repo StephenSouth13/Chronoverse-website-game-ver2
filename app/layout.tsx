@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type React from "react"
 import type { Metadata } from "next"
 import { inter, orbitron } from "@/lib/fonts"
@@ -9,8 +10,8 @@ import { LanguageProvider } from "@/lib/i18n"
 import ChronoBot from "@/components/chatbot/ChronoBot"
 import CursorManager from "@/components/common/CursorManager"
 import { Toaster } from "@/components/ui/toaster"
-import ParticleBackground from "@/components/common/ParticleBackground"
-import ShootingStars from "@/components/common/ShootingStars"
+// import ParticleBackground from "@/components/common/ParticleBackground" // Removed
+// import ShootingStars from "@/components/common/ShootingStars" // Removed
 import { AuthProvider } from "@/lib/auth"
 import AudioPlayer from "@/components/common/AudioPlayer"
 
@@ -46,7 +47,9 @@ export const metadata: Metadata = {
     apple: "/placeholder.png",
   },
   manifest: "/site.webmanifest", // Thêm liên kết đến webmanifest
-    generator: 'v0.dev'
+    generator: 'Quach Thanh Long',
+    applicationName: 'ChronoVerse',
+
 }
 
 export default function RootLayout({
@@ -60,8 +63,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             <AuthProvider>
-              <ParticleBackground />
-              <ShootingStars />
+              {/* <ParticleBackground /> */} {/* Removed */}
+              {/* <ShootingStars /> */} {/* Removed */}
               <Header />
               <main className="min-h-screen relative z-10">{children}</main>
               <Footer />

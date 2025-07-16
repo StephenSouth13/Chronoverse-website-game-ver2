@@ -16,13 +16,13 @@ export default function ShootingStars() {
 
   return (
     <Particles
-      id="shooting-stars-particles"
+      id="shooting-stars-particles" // Unique ID for this canvas
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
         fullScreen: {
           enable: true,
-          zIndex: 1, // Ensure it's above the main ParticleBackground but below content
+          zIndex: 1, // Ensure it's above the main ParticleBackground but below content (which is z-10)
         },
         particles: {
           number: {
