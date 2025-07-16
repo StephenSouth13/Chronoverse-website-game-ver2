@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode variables - keeping them for completeness, though dark mode is default */
+    --background: 0 0% 100%; /* White */
+    --foreground: 240 10% 3.9%; /* Near black */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 217.2 91.2% 59.8%; /* electric-blue equivalent */
+    --primary-foreground: 0 0% 98%; /* White */
+    --secondary: 240 5% 96.1%; /* Light gray */
+    --secondary-foreground: 240 10% 3.9%;
+    --muted: 240 5% 96.1%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 5% 96.1%;
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 84.2% 60.2%; /* Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 217.2 91.2% 59.8%;
+
+    /* Custom ChronoVerse colors for light mode (can be adjusted if needed) */
+    --deep-space: #0a0a1a;
+    --electric-blue: #00f0ff;
+    --nebula-purple: #a020f0;
+    --metallic-gold: #ffd700;
+    --burning-orange: #ff4500;
+    --glass-bg: rgba(0, 0, 0, 0.05); /* Lighter glass for light mode */
+    --glass-border: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    /* Dark mode variables - explicitly using deep-space for background */
+    --background: var(--deep-space);
+    --foreground: 0 0% 98%; /* White */
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 64.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 217.2 91.2% 59.8%;
+
+    /* Custom ChronoVerse colors for dark mode */
+    --deep-space: #0a0a1a;
+    --electric-blue: #00f0ff;
+    --nebula-purple: #a020f0;
+    --metallic-gold: #ffd700;
+    --burning-orange: #ff4500;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer base {
+  /* Ensure html and body use the theme's background and foreground colors */
+  html {
+    @apply bg-background text-foreground;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  * {
+    @apply border-border;
+  }
+}
+
+/* Custom styles for glassmorphism */
+.glassmorphism {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+/* Custom spaceship cursor */
+.custom-spaceship-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewport='0 0 24 24'><text x='0' y='20' font-size='20'>🛸</text></svg>")
+    12 12, auto;
+}
+
+/* Ensure text is visible on glassmorphism cards */
+.glassmorphism .text-foreground {
+  color: hsl(var(--foreground));
+}
+.glassmorphism .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
